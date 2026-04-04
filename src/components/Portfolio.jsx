@@ -5,23 +5,23 @@ export default function Portfolio() {
 
   const projects = [
     {
-      category: 'Inventory Management',
-      title: 'StockSense Pro — Multi-Warehouse Intelligence',
+      category: 'Enterprise SaaS',
+      title: 'CloudSense Pro — B2B Architecture',
       tags: ['React', 'Node.js'],
       bg: 'pv1',
       icon: '📦',
       size: 'large'
     },
     {
-      category: 'Auction Portal',
-      title: 'BidVault — Real-Time Auction Platform',
+      category: 'Cloud Architecture',
+      title: 'CloudVault — Secure Data Systems',
       tags: ['Next.js', 'WebSockets'],
       bg: 'pv2',
       icon: '🔨'
     },
     {
-      category: 'ERP Manufacturing',
-      title: 'FactoryOS — Production Tracker',
+      category: 'Legacy Modernization',
+      title: 'FactoryOS — Production Tracking',
       tags: ['Python', 'Django'],
       bg: 'pv3',
       icon: '🏭'
@@ -60,7 +60,7 @@ export default function Portfolio() {
         </div>
 
         <div className="pfilt reveal">
-          {['All Projects', 'Inventory Systems', 'Auction Portals'].map((filter) => (
+          {['All Projects', 'Enterprise SaaS', 'Cloud Architecture'].map((filter) => (
             <button 
               key={filter}
               className={`pfb ${activeFilter === filter ? 'on' : ''}`}

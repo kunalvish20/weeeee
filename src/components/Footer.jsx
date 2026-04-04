@@ -8,8 +8,8 @@ export default function Footer() {
               <div className="bmark"><span>B</span></div>
               <div className="bname">balizana<em> Technologies</em></div>
             </div>
-            <p className="fgt">
-              We engineer enterprise-grade software — inventory systems, auction platforms, and procurement solutions — that accelerate business growth.
+            <p className="fp">
+              We engineer elite custom software — scalable SaaS platforms, enterprise architecture, and legacy IT modernizations — that accelerate global business growth.
             </p>
             <div className="fsocs">
               <a href="#" className="fsc">in</a>
@@ -20,11 +20,10 @@ export default function Footer() {
 
           <div className="fc">
             <h5>Services</h5>
-            <ul>
-              <li><a href="#">InventR@</a></li>
-              <li><a href="#">Consulting Services</a></li>
-              <li><a href="#">WSPro Procurement</a></li>
-              <li><a href="#">Auction Portals</a></li>
+            <ul className="flinks">
+              <li><a href="#">Custom Software Dev</a></li>
+              <li><a href="#">Enterprise SaaS Platforms</a></li>
+              <li><a href="#">IT Engineering Solutions</a></li>
               <li><a href="#">Custom Software</a></li>
               <li><a href="#">ERP Integration</a></li>
             </ul>

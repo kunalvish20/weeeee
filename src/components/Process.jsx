@@ -26,8 +26,8 @@ export default function Process() {
 
   const skills = [
     { name: 'Full-Stack Web Development', percentage: 96 },
-    { name: 'Inventory & ERP Systems', percentage: 94 },
-    { name: 'Auction & Bidding Platforms', percentage: 91 }
+    { name: 'Enterprise Resource Planning', percentage: 94 },
+    { name: 'Cloud & SaaS Architecture', percentage: 91 }
   ]
 
   const chips = ['React', 'Node.js', 'Python', 'PostgreSQL', 'Flutter', 'AWS']

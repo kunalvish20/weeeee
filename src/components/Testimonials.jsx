@@ -4,26 +4,26 @@ export default function Testimonials() {
   const testimonials = [
     {
       stars: '★★★★★',
-      quote: '"balizana built our entire inventory and auction system from scratch. The platform manages over 50,000 SKUs flawlessly."',
+      quote: '"balizana built our entire enterprise architecture from scratch. The platform processes millions of API requests flawlessly."',
       initials: 'AK',
       name: 'Arjun Kapoor',
-      role: 'Director of Operations, TradeHub',
+      role: 'Director of Technology, TradeHub',
       bg: 'ta'
     },
     {
       stars: '★★★★★',
-      quote: '"Their WSPro procurement solution reduced our cycle time by 60%. Absolutely exceptional."',
+      quote: '"Their custom SaaS solution reduced our cycle time by 60%. Absolutely exceptional software engineering."',
       initials: 'SR',
       name: 'Sunita Rajan',
-      role: 'CEO, AuctionBridge',
+      role: 'CEO, CloudBridge',
       bg: 'tb'
     },
     {
       stars: '★★★★★',
-      quote: '"Modernized our legacy inventory system in 12 weeks. Operations team loves it."',
+      quote: '"Modernized our legacy IT infrastructure in 12 weeks. Our engineering team loves it."',
       initials: 'PM',
       name: 'Priya Mehta',
-      role: 'CTO, LogiMart',
+      role: 'CTO, LogiData',
       bg: 'tc2'
     }
   ]

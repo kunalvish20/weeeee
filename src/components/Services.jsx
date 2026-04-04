@@ -3,46 +3,35 @@ import { useEffect } from 'react'
 export default function Services() {
   const services = [
     {
-      icon: '📦',
-      title: 'InventR@ — Inventory Management',
-      desc: 'End-to-end inventory control with real-time tracking, barcode/QR scanning, automated reorder points, multi-warehouse management, and live analytics.',
-      backgroundColor: 'ib'
-    },
-    {
-      icon: '🛒',
-      title: 'WSPro — Procurement Solution',
-      desc: 'Intelligent procurement automation, vendor management, smart PO workflows, spend analytics, and contract lifecycle management.',
-      backgroundColor: 'ip'
-    },
-    {
-      icon: '🛒',
-      title: 'Consulting Services',
-      desc: 'Intelligent procurement automation, vendor management, smart PO workflows, spend analytics, and contract lifecycle management.',
-      backgroundColor: 'ip'
-    },
-    {
-      icon: '🔨',
-      title: 'Auction Portal Development',
-      desc: 'Feature-rich auction platforms with live bidding engines, automated lot management, payment gateway integration, fraud prevention.',
-      backgroundColor: 'ia'
-    },
-    {
       icon: '💻',
       title: 'Custom Software Development',
-      desc: 'Tailor-made enterprise applications and SaaS platforms built to your exact specifications with modern architectures.',
+      desc: 'Top-tier enterprise applications and robust SaaS platforms built to your exact specifications using modern IT architecture.',
       backgroundColor: 'is'
     },
     {
-      icon: '📱',
-      title: 'Mobile App Development',
-      desc: 'Cross-platform iOS and Android apps with offline capabilities and seamless backend integration for field teams.',
-      backgroundColor: 'ig'
+      icon: '🌐',
+      title: 'Enterprise IT Solutions',
+      desc: 'Comprehensive IT consulting, cloud migrations, and system architecture for enterprise digital transformations.',
+      backgroundColor: 'ib'
     },
+
     {
       icon: '🔗',
-      title: 'ERP & API Integration',
-      desc: 'Seamless connectivity with SAP, Tally, Zoho, and 300+ tools. Unify your entire technology stack.',
+      title: 'ERP & System Integration',
+      desc: 'Seamless connectivity with SAP, Oracle, Zoho, and 300+ enterprise software tools to unify your technology stack.',
       backgroundColor: 'ir'
+    },
+    {
+      icon: '🤖',
+      title: 'AI & Data Engineering',
+      desc: 'Intelligent automation, predictive analytics, and custom AI integration engineered specifically for your business data.',
+      backgroundColor: 'ia'
+    },
+    {
+      icon: '🛒',
+      title: 'B2B Software Solutions',
+      desc: 'Intelligent CRM automation, secure portals, and smart workflows custom-built for robust IT infrastructure.',
+      backgroundColor: 'ip'
     }
   ]
 
@@ -71,11 +60,11 @@ export default function Services() {
               <span className="tdot"></span>Our Services
             </div>
             <h2 className="sh2 reveal">
-              Solutions That <span className="si">Move</span><br/>
-              Your Business Forward
+              Enterprise IT Services &amp; <span className="si">Custom</span><br/>
+              Software Engineering
             </h2>
             <p className="sp reveal">
-              Precision-engineered software for modern enterprises — built to scale, integrate, and deliver measurable ROI.
+              Precision-engineered software development for modern enterprises — built to scale, integrate natively, and deliver measurable IT ROI.
             </p>
           </div>
           <a href="#contact" className="bmain reveal" style={{alignSelf: 'center'}}>

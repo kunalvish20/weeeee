@@ -19,13 +19,13 @@ export default function Consulting() {
     {
       icon: '🎯',
       title: 'Discovery Workshop',
-      desc: 'Deep-dive analysis & roadmap for inventory/auction modernization.',
+      desc: 'Deep-dive analysis & roadmap for legacy system modernization.',
       features: ['2-week engagement', 'Process audit & KPIs']
     },
     {
-      icon: '⚙️',
-      title: 'Procurement Advisory',
-      desc: 'WSPro implementation & vendor strategy optimization.',
+      icon: '🏛️',
+      title: 'Cloud Advisory',
+      desc: 'Cloud infrastructure & vendor strategy optimization.',
       features: ['Sourcing transformation', 'Cost reduction roadmap']
     },
     {
@@ -41,12 +41,12 @@ export default function Consulting() {
       initials: 'RK',
       name: 'Raghav Khanna',
       role: 'Principal Consultant',
-      bio: '15+ years in supply chain & inventory transformation. Led 40+ enterprise inventory projects.'
+      bio: '15+ years in software architecture & enterprise digital transformation. Led 40+ SaaS deployment projects.'
     },
     {
       initials: 'SM',
       name: 'Shreya Mehta',
-      role: 'Procurement Strategist',
+      role: 'Cloud Architect',
       bio: 'Former CPO, expert in WSPro implementation, sustainable sourcing & vendor ecosystems.'
     },
     {
