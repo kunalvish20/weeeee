@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /node_modules/
+
+Sitemap: https://balizana.com/sitemap.xml
+
+User-agent: *
+Crawl-delay: 1

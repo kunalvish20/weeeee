@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>balizana Technologies | Enterprise Software & Consulting</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #05112A;
+      --navy2: #091E3E;
+      --blue: #1847C2;
+      --blue2: #2558E8;
+      --blue3: #3B6EF8;
+      --sky: #0EA5E9;
+      --sky-pale: #E0F2FE;
+      --white: #FFFFFF;
+      --off: #F7F9FF;
+      --border: #E4EAFF;
+      --border2: #D0DCF8;
+      --text: #0F1D35;
+      --text2: #3D5070;
+      --text3: #7A8FB0;
+      --accent: #0CF2B4;
+      --amber: #FFBA08;
+      --r: 18px;
+      --r2: 24px;
+      --sh: 0 4px 24px rgba(24, 71, 194, .10);
+      --sh-lg: 0 16px 60px rgba(24, 71, 194, .16);
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --serif: 'Instrument Serif', serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(228, 234, 255, .8);
+      transition: box-shadow .3s;
+    }
+
+    .nav.up {
+      box-shadow: 0 8px 32px rgba(5, 17, 42, .08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bmark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(145deg, var(--blue2), var(--blue3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37, 88, 232, .35);
+    }
+
+    .bmark span {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-top: -2px;
+    }
+
+    .bname {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--navy);
+    }
+
+    .bname em {
+      font-style: normal;
+      color: var(--blue2);
+    }
+
+    .nav-c {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-c a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text2);
+      padding: 7px 14px;
+      border-radius: 50px;
+      transition: color .2s, background .2s;
+    }
+
+    .nav-c a:hover {
+      color: var(--blue2);
+      background: var(--sky-pale);
+    }
+
+    .nav-r {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nbg {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--blue2);
+      padding: 8px 20px;
+      border-radius: 50px;
+      border: 1.5px solid var(--border2);
+      transition: all .2s;
+    }
+
+    .nbg:hover {
+      background: var(--off);
+    }
+
+    .nbf {
+      font-size: .875rem;
+      font-weight: 700;
+      color: #fff;
+      padding: 9px 22px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--blue2), var(--blue));
+      box-shadow: 0 4px 18px rgba(37, 88, 232, .35);
+      transition: all .25s;
+      white-space: nowrap;
+    }
+
+    .nbf:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37, 88, 232, .45);
+    }
+
+    .green {
+      color: green;
+    }
+
+    .burg {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .burg span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    .mmenu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      z-index: 899;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 5%;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mmenu.show {
+      display: flex;
+    }
+
+    .mmenu a {
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--text2);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── HERO (unchanged structure) ── */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .hmesh {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse 70% 60% at 80% 20%, rgba(37, 88, 232, .07) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(14, 165, 233, .06) 0%, transparent 70%);
+    }
+
+    .hgrid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: linear-gradient(rgba(37, 88, 232, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 88, 232, .03) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: radial-gradient(ellipse 80% 80% at 60% 40%, black 20%, transparent 100%);
+    }
+
+    .hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, rgba(37, 88, 232, .08), rgba(14, 165, 233, .05));
+      border: 1px solid rgba(37, 88, 232, .15);
+      padding: 5px 16px 5px 6px;
+      border-radius: 50px;
+      margin-bottom: 26px;
+      opacity: 0;
+      animation: sUp .7s .05s ease forwards;
+    }
+
+    .pill-chip {
+      background: linear-gradient(135deg, var(--blue2), var(--sky));
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      padding: 3px 10px;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    .pill-txt {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--blue2);
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.5rem, 4vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      color: var(--navy);
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: sUp .7s .15s ease forwards;
+    }
+
+    .hero-h1 .si {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      background: linear-gradient(135deg, var(--blue2), var(--sky));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.02rem;
+      line-height: 1.78;
+      color: var(--text2);
+      max-width: 500px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: sUp .7s .25s ease forwards;
+    }
+
+    .hero-acts {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: sUp .7s .38s ease forwards;
+    }
+
+    .bmain {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--blue2), var(--blue));
+      color: #fff;
+      font-size: .92rem;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(37, 88, 232, .38);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .bmain:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 38px rgba(37, 88, 232, .48);
+    }
+
+    .bghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue2);
+      font-size: .92rem;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 50px;
+      border: 1.5px solid var(--border2);
+      background: var(--off);
+      transition: all .2s;
+    }
+
+    .bghost:hover {
+      border-color: var(--blue2);
+      background: var(--sky-pale);
+    }
+
+    .hero-kpis {
+      display: flex;
+      gap: 36px;
+      margin-top: 48px;
+      opacity: 0;
+      animation: sUp .7s .52s ease forwards;
+    }
+
+    .kv {
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--navy);
+      letter-spacing: -.03em;
+    }
+
+    .kv span {
+      color: var(--blue2);
+    }
+
+    .kl {
+      font-size: .72rem;
+      font-weight: 500;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-top: 5px;
+    }
+
+    .ksep {
+      width: 1px;
+      background: var(--border2);
+      align-self: stretch;
+    }
+
+    /* Hero Visual */
+    .hvisual {
+      position: relative;
+      opacity: 0;
+      animation: fIn .9s .4s ease forwards;
+    }
+
+    .dash {
+      background: #fff;
+      border-radius: var(--r2);
+      border: 1px solid var(--border);
+      box-shadow: var(--sh-lg), 0 0 0 1px rgba(37, 88, 232, .04);
+      overflow: hidden;
+    }
+
+    .dtop {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .dtl {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dlsm {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--blue2), var(--blue3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dlsm svg {
+      width: 13px;
+      height: 13px;
+      fill: #fff;
+    }
+
+    .dappn {
+      font-size: .8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .ddots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .ddots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dd1 {
+      background: #FF605C;
+    }
+
+    .dd2 {
+      background: #FFBD44;
+    }
+
+    .dd3 {
+      background: #00CA4E;
+    }
+
+    .dtabs {
+      display: flex;
+      gap: 2px;
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--off);
+    }
+
+    .dtab {
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--text3);
+      padding: 4px 11px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .dtab.on {
+      background: #fff;
+      color: var(--blue2);
+      box-shadow: 0 2px 8px rgba(37, 88, 232, .12);
+    }
+
+    .dbody {
+      padding: 14px;
+    }
+
+    .dmetrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-bottom: 12px;
+    }
+
+    .dmc {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 12px;
+    }
+
+    .dml {
+      font-size: .63rem;
+      font-weight: 600;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 5px;
+    }
+
+    .dmv {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+
+    .dmd {
+      font-size: .65rem;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    .ug {
+      color: #10B981;
+    }
+
+    .ub {
+      color: var(--blue2);
+    }
+
+    .dchart {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 9px;
+    }
+
+    .dch {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .dct {
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .dcb {
+      font-size: .63rem;
+      font-weight: 700;
+      color: var(--blue2);
+      background: rgba(37, 88, 232, .08);
+      padding: 3px 9px;
+      border-radius: 50px;
+    }
+
+    .sbars {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 58px;
+    }
+
+    .sb {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      background: var(--border);
+    }
+
+    .sb.hi {
+      background: linear-gradient(180deg, var(--blue3), var(--blue2));
+    }
+
+    .sb.md {
+      background: linear-gradient(180deg, #93C5FD, #BFDBFE);
+    }
+
+    .dlist {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 11px;
+    }
+
+    .drl {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drico {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .82rem;
+      flex-shrink: 0;
+    }
+
+    .drn {
+      font-size: .73rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .drs {
+      font-size: .62rem;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    .drv {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .sdot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    .sg {
+      background: #10B981;
+      box-shadow: 0 0 5px rgba(16, 185, 129, .5);
+    }
+
+    .sy {
+      background: #F59E0B;
+    }
+
+    .fb {
+      position: absolute;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(5, 17, 42, .12), 0 0 0 1px var(--border);
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .fbi {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .fbt {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .fbs {
+      font-size: .62rem;
+      color: var(--text3);
+    }
+
+    .fb1 {
+      top: -16px;
+      right: -14px;
+      animation-delay: 0s;
+    }
+
+    .fb2 {
+      bottom: 55px;
+      left: -18px;
+      animation-delay: 2s;
+    }
+
+    .fb3 {
+      bottom: -12px;
+      right: 50px;
+      animation-delay: 1.2s;
+    }
+
+    /* CLIENTS BAND */
+    .cband {
+      background: var(--off);
+      padding: 30px 5%;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cband-i {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .clab {
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      white-space: nowrap;
+    }
+
+    .csep {
+      width: 1px;
+      height: 28px;
+      background: var(--border2);
+    }
+
+    .clogos {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .clogo {
+      font-size: .9rem;
+      font-weight: 800;
+      color: var(--border2);
+      letter-spacing: -.02em;
+      transition: color .25s;
+      cursor: default;
+    }
+
+    .clogo:hover {
+      color: var(--blue2);
+    }
+
+    /* SECTION HELPERS */
+    .sec {
+      padding: 96px 5%;
+    }
+
+    .sec-i {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--border2);
+      background: linear-gradient(90deg, rgba(37, 88, 232, .05), rgba(14, 165, 233, .03));
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--blue2);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .tdot {
+      width: 6px;
+      height: 6px;
+      background: var(--blue2);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .sh2 {
+      font-size: clamp(1.85rem, 2.7vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      color: var(--navy);
+    }
+
+    .sh2 .si {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--blue2);
+    }
+
+    .sp {
+      font-size: .97rem;
+      line-height: 1.78;
+      color: var(--text2);
+      max-width: 500px;
+      margin-top: 14px;
+    }
+
+    .sec-hd {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+
+    /* SERVICES grid */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .svc {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 32px;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .svc::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(135deg, var(--sky-pale), rgba(255, 255, 255, 0));
+      transition: opacity .3s;
+      border-radius: var(--r2);
+    }
+
+    .svc:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(37, 88, 232, .1);
+      border-color: var(--border2);
+    }
+
+    .svc:hover::after {
+      opacity: 1;
+    }
+
+    .sic {
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ib {
+      background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+    }
+
+    .is {
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+    }
+
+    .ii {
+      background: linear-gradient(135deg, #E0E7FF, #C7D2FE);
+    }
+
+    .ig {
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+    }
+
+    .ia {
+      background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+    }
+
+    .ir {
+      background: linear-gradient(135deg, #FFE4E6, #FECDD3);
+    }
+
+    .ip {
+      background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
+    }
+
+    .stit {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -.01em;
+    }
+
+    .sdesc {
+      font-size: .87rem;
+      line-height: 1.7;
+      color: var(--text2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .sarr {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--blue2);
+      font-size: .8rem;
+      font-weight: 700;
+      margin-top: 18px;
+      position: relative;
+      z-index: 1;
+      transition: gap .2s;
+    }
+
+    .sarr:hover {
+      gap: 9px;
+    }
+
+    /* HOW SECTION unchanged */
+    .how-sec {
+      background: var(--off);
+    }
+
+    .how-i {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step {
+      display: flex;
+      gap: 22px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left .25s;
+      cursor: default;
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step:hover {
+      padding-left: 10px;
+    }
+
+    .snum {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--border2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 48px;
+      font-family: var(--serif);
+      font-style: italic;
+      transition: color .25s;
+    }
+
+    .step:hover .snum {
+      color: var(--blue3);
+    }
+
+    .stitle {
+      font-size: .96rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 7px;
+    }
+
+    .sdesc2 {
+      font-size: .86rem;
+      line-height: 1.68;
+      color: var(--text2);
+    }
+
+    .tpanel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 30px;
+      box-shadow: var(--sh);
+    }
+
+    .tpt {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 24px;
+    }
+
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .sk-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .sk-n {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .sk-p {
+      font-size: .77rem;
+      font-weight: 700;
+      color: var(--blue2);
+    }
+
+    .sk-tr {
+      height: 7px;
+      background: var(--border);
+      border-radius: 50px;
+      overflow: hidden;
+    }
+
+    .sk-fi {
+      height: 100%;
+      border-radius: 50px;
+      background: linear-gradient(90deg, var(--blue2), var(--sky));
+      width: 0;
+      transition: width 1.6s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .chip {
+      background: var(--off);
+      border: 1px solid var(--border2);
+      color: var(--blue2);
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      transition: all .2s;
+      cursor: default;
+    }
+
+    .chip:hover {
+      background: var(--sky-pale);
+      border-color: var(--blue2);
+    }
+
+    /* WHY 
+  
+  
+  — LIGHT BLUE VERSION */
+    .why-sec {
+      background: #EFF8FF;
+      padding: 96px 5%;
+    }
+
+    .why-sec .tag {
+      background: rgba(37, 88, 232, .08);
+      border-color: #CDE5FE;
+      color: var(--blue2);
+    }
+
+    .why-sec .tdot {
+      background: var(--blue2);
+    }
+
+    .why-sec .sh2 {
+      color: var(--navy);
+    }
+
+    .wgrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+
+    .wc {
+      background: var(--white);
+      border: 1px solid #DAE9FF;
+      border-radius: var(--r2);
+      padding: 26px 22px;
+      transition: all .3s;
+      cursor: default;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .wc:hover {
+      background: #FFFFFF;
+      border-color: var(--blue2);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(37, 88, 232, .08);
+    }
+
+    .wic {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(37, 88, 232, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+      transition: background .3s;
+    }
+
+    .wc:hover .wic {
+      background: rgba(37, 88, 232, .2);
+    }
+
+    .wtit {
+      font-size: .93rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .wdesc {
+      font-size: .82rem;
+      line-height: 1.65;
+      color: var(--text2);
+    }
+
+    /* PORTFOLIO unchanged */
+    .pfilt {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .pfb {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text2);
+      padding: 7px 17px;
+      border-radius: 50px;
+      border: 1.5px solid var(--border);
+      cursor: pointer;
+      transition: all .2s;
+      background: var(--white);
+    }
+
+    .pfb.on,
+    .pfb:hover {
+      background: var(--blue2);
+      color: #fff;
+      border-color: var(--blue2);
+      box-shadow: 0 4px 16px rgba(37, 88, 232, .28);
+    }
+
+    .pgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pc {
+      border-radius: var(--r2);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: transform .35s, box-shadow .35s;
+    }
+
+    .pc:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 64px rgba(5, 17, 42, .15);
+    }
+
+    .pc:nth-child(1) {
+      grid-column: span 2;
+    }
+
+    .pvis {
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pc:nth-child(1) .pvis {
+      aspect-ratio: 16/7;
+    }
+
+    .pc:not(:nth-child(1)) .pvis {
+      aspect-ratio: 4/3;
+    }
+
+    .pvi {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      transition: transform .4s;
+    }
+
+    .pc:hover .pvi {
+      transform: scale(1.06);
+    }
+
+    .pv1 {
+      background: linear-gradient(140deg, #0A1628 0%, #1847C2 100%);
+    }
+
+    .pv2 {
+      background: linear-gradient(140deg, #064E3B 0%, #059669 100%);
+    }
+
+    .pv3 {
+      background: linear-gradient(140deg, #7C2D12 0%, #EA580C 100%);
+    }
+
+    .pv4 {
+      background: linear-gradient(140deg, #1E1B4B 0%, #7C3AED 100%);
+    }
+
+    .pov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(5, 17, 42, .9) 0%, rgba(5, 17, 42, .2) 50%, transparent 100%);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .pcat {
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 5px;
+    }
+
+    .ptit {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .pc:nth-child(1) .ptit {
+      font-size: 1.25rem;
+    }
+
+    .ptags {
+      display: flex;
+      gap: 6px;
+      margin-top: 9px;
+      flex-wrap: wrap;
+    }
+
+    .ptag {
+      font-size: .62rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, .11);
+      color: rgba(255, 255, 255, .75);
+      padding: 3px 9px;
+      border-radius: 50px;
+      backdrop-filter: blur(6px);
+    }
+
+    .plink {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .82rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .pc:hover .plink {
+      opacity: 1;
+    }
+
+    /* TESTIMONIALS */
+    .tgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .tc {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 30px;
+      transition: all .3s;
+    }
+
+    .tc:hover {
+      border-color: var(--border2);
+      box-shadow: 0 16px 48px rgba(37, 88, 232, .09);
+      transform: translateY(-5px);
+    }
+
+    .tst {
+      color: var(--amber);
+      font-size: .8rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .tq {
+      font-size: .97rem;
+      line-height: 1.78;
+      color: var(--text2);
+      font-style: italic;
+      margin-bottom: 24px;
+      font-family: var(--serif);
+    }
+
+    .tau {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tav {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: .9rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ta {
+      background: linear-gradient(135deg, var(--blue2), var(--blue));
+    }
+
+    .tb {
+      background: linear-gradient(135deg, #0891B2, #0E7490);
+    }
+
+    .tc2 {
+      background: linear-gradient(135deg, #059669, #064E3B);
+    }
+
+    .tn {
+      font-size: .86rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .tr {
+      font-size: .74rem;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    /* CONSULTING SECTION (replaces pricing) */
+    .consult-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .consult-card {
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 34px 28px;
+      transition: transform .3s;
+      background: #fff;
+    }
+
+    .consult-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(37, 88, 232, .08);
+    }
+
+    .consult-icon {
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
+
+    .consult-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .consult-desc {
+      font-size: .9rem;
+      color: var(--text2);
+      margin-bottom: 20px;
+    }
+
+    .consult-feature {
+      font-size: .85rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .consult-cta {
+      margin-top: 24px;
+      display: inline-block;
+      font-weight: 700;
+      color: var(--blue2);
+    }
+
+    .experts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 64px;
+    }
+
+    .expert-card {
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 28px 20px;
+      text-align: center;
+      transition: all .3s;
+    }
+
+    .expert-card:hover {
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+      transform: translateY(-5px);
+    }
+
+    .expert-img {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(145deg, var(--blue2), var(--sky));
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .expert-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .expert-role {
+      font-size: .8rem;
+      color: var(--blue2);
+      font-weight: 600;
+      margin: 5px 0 8px;
+    }
+
+    .expert-bio {
+      font-size: .8rem;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+
+    /* CTA light blue */
+    .cta-sec {
+      background: linear-gradient(125deg, #EFF8FF 0%, #E1F0FE 100%);
+      padding: 96px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-sec .tag {
+      background: rgba(37, 88, 232, .12);
+      border-color: #BFDBFE;
+      color: var(--blue2);
+    }
+
+    .cta-sec .sh2 {
+      color: var(--navy);
+    }
+
+    .ctap {
+      color: var(--text2);
+      max-width: 480px;
+      margin: 16px auto 34px;
+      line-height: 1.7;
+    }
+
+    .bwhite {
+      background: #fff;
+      color: var(--blue2);
+      font-size: .92rem;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 50px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
+      transition: all .25s;
+    }
+
+    .bwhite:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(37, 88, 232, .2);
+    }
+
+    .boutw {
+      color: var(--blue2);
+      font-size: .92rem;
+      font-weight: 600;
+      padding: 13px 28px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(37, 88, 232, .25);
+      transition: all .2s;
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .boutw:hover {
+      border-color: var(--blue2);
+      background: #fff;
+    }
+
+    /* FOOTER - LIGHT REFINED VERSION */
+    footer {
+      background: #F8FAFE;
+      border-top: 1px solid var(--border);
+      padding: 68px 5% 34px;
+      color: var(--text2);
+    }
+
+    .fi {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .fg {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 52px;
+      margin-bottom: 48px;
+    }
+
+    .fgb .bname {
+      color: var(--navy);
+    }
+
+    .fgb .bname em {
+      color: var(--blue2);
+    }
+
+    .ef {
+      color: var(--accent)
+    }
+
+    .fgt {
+      font-size: .86rem;
+      line-height: 1.72;
+      color: var(--text2);
+      max-width: 250px;
+      font-weight: 400;
+      margin-top: 14px;
+    }
+
+    .fsocs {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .fsc {
+      width: 33px;
+      height: 33px;
+      border-radius: 9px;
+      background: var(--white);
+      border: 1px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .78rem;
+      color: var(--blue2);
+      transition: all .2s;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .fsc:hover {
+      background: var(--blue2);
+      border-color: var(--blue2);
+      color: #fff;
+    }
+
+    .fc h5 {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 16px;
+    }
+
+    .fc ul {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .fc ul a {
+      font-size: .85rem;
+      color: var(--text3);
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .fc ul a:hover {
+      color: var(--blue2);
+    }
+
+    .fbot {
+      border-top: 1px solid var(--border);
+      padding-top: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .fcp {
+      font-size: .78rem;
+      color: var(--text3);
+    }
+
+    .flinks {
+      display: flex;
+      gap: 18px;
+    }
+
+    .flinks a {
+      font-size: .78rem;
+      color: var(--text3);
+      transition: color .2s;
+    }
+
+    .flinks a:hover {
+      color: var(--blue2);
+    }
+
+    .stt {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue2), var(--blue));
+      color: #fff;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 8px 24px rgba(37, 88, 232, .42);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .3s, transform .3s;
+      z-index: 800;
+    }
+
+    .stt.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes sUp {
+      from {
+        opacity: 0;
+        transform: translateY(26px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media(max-width:1100px) {
+      .wgrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .fg {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .consult-grid,
+      .experts-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:860px) {
+
+      .nav-c,
+      .nbg {
+        display: none;
+      }
+
+      .burg {
+        display: flex;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hvisual {
+        display: none;
+      }
+
+      .how-i {
+        grid-template-columns: 1fr;
+      }
+
+      .svc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .pc:nth-child(1) {
+        grid-column: span 1;
+      }
+
+      .tgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .sec-hd {
+        flex-direction: column;
+      }
+
+      .consult-grid,
+      .experts-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:540px) {
+
+      .wgrid,
+      .tmgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-acts,
+      .ctabtns {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .fg {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-kpis {
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="#" class="brand">
+      <div><span><img src="/Balizana_logo.jpeg" alt="Balizana Logo" style="height: 30px; width: 30px;"></span></div>
+
+      <div class="bname">
+        <em>bali</em><span class="green">zana</span>
+        <em>technologies</em>
+      </div>
+    </a>
+    <div class="nav-c">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#consulting">Consulting</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-r">
+      <a href="#" class="nbg">Sign In</a>
+      <a href="#contact" class="nbf">Get a Free Quote →</a>
+    </div>
+    <div class="burg" id="burg"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mmenu" id="mm">
+    <a href="#services">Services</a><a href="#process">Process</a>
+    <a href="#portfolio">Portfolio</a><a href="#consulting">Consulting</a>
+    <a href="#contact">Get Free Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hmesh"></div>
+    <div class="hgrid"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill"><span class="pill-chip">New</span><span class="pill-txt">Trusted by 500+ enterprises
+            across India</span></div>
+        <h1 class="hero-h1">Enterprise Software<br>Built to <span class="si">Scale</span><br>&amp; Perform</h1>
+        <p class="hero-sub">balizana delivers custom software solutions — from intelligent inventory management systems
+          and live auction portals to full enterprise applications — engineered to grow your business.</p>
+        <div class="hero-acts"><a href="#portfolio" class="bmain">Explore Our Work →</a><a href="#contact"
+            class="bghost">💬 Talk to an Expert</a></div>
+        <div class="hero-kpis">
+          <div>
+            <div class="kv">500<span>+</span></div>
+            <div class="kl">Projects Done</div>
+          </div>
+          <div class="ksep"></div>
+          <div>
+            <div class="kv">98<span>%</span></div>
+            <div class="kl">Client Retention</div>
+          </div>
+          <div class="ksep"></div>
+          <div>
+            <div class="kv">12<span>+</span></div>
+            <div class="kl">Years Experience</div>
+          </div>
+        </div>
+      </div>
+      <div class="hvisual">
+        <div class="dash">
+          <div class="dtop">
+            <div class="dtl">
+              <div class="dlsm"><svg viewBox="0 0 24 24">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg></div><span class="dappn">balizana Enterprise Dashboard</span>
+            </div>
+            <div class="ddots"><span class="dd1"></span><span class="dd2"></span><span class="dd3"></span></div>
+          </div>
+          <div class="dtabs">
+            <div class="dtab on">Overview</div>
+            <div class="dtab">Inventory</div>
+            <div class="dtab">Auctions</div>
+            <div class="dtab">Reports</div>
+          </div>
+          <div class="dbody">
+            <div class="dmetrics">
+              <div class="dmc">
+                <div class="dml">Revenue</div>
+                <div class="dmv">₹48.2L</div>
+                <div class="dmd ug">↑ 18.4%</div>
+              </div>
+              <div class="dmc">
+                <div class="dml">Stock SKUs</div>
+                <div class="dmv">12,480</div>
+                <div class="dmd ub">↑ 6.1%</div>
+              </div>
+              <div class="dmc">
+                <div class="dml">Live Bids</div>
+                <div class="dmv">342</div>
+                <div class="dmd ug">↑ 31.2%</div>
+              </div>
+            </div>
+            <div class="dchart">
+              <div class="dch"><span class="dct">Weekly Sales Performance</span><span class="dcb">This Week +24%</span>
+              </div>
+              <div class="sbars">
+                <div class="sb md" style="height:42%"></div>
+                <div class="sb hi" style="height:60%"></div>
+                <div class="sb md" style="height:36%"></div>
+                <div class="sb hi" style="height:80%"></div>
+                <div class="sb md" style="height:52%"></div>
+                <div class="sb hi" style="height:96%"></div>
+                <div class="sb md" style="height:70%"></div>
+              </div>
+            </div>
+            <div class="dlist">
+              <div class="drow">
+                <div class="drl">
+                  <div class="drico" style="background:#DBEAFE;">📦</div>
+                  <div>
+                    <div class="drn">Inventory Module</div>
+                    <div class="drs"><span class="sdot sg"></span>Live · 1,240 SKUs</div>
+                  </div>
+                </div>
+                <div class="drv">₹12.4L</div>
+              </div>
+              <div class="drow">
+                <div class="drl">
+                  <div class="drico" style="background:#FEF3C7;">🔨</div>
+                  <div>
+                    <div class="drn">Auction Portal</div>
+                    <div class="drs"><span class="sdot sg"></span>Live · 48 active lots</div>
+                  </div>
+                </div>
+                <div class="drv">₹8.7L</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fb fb1"><span class="fbi">🚀</span>
+          <div>
+            <div class="fbt">v4.1 Deployed!</div>
+            <div class="fbs">Zero downtime release</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cband">
+    <div class="cband-i"><span class="clab">Trusted by</span>
+      <div class="csep"></div>
+      <div class="clogos"><span class="clogo">TechVision</span><span class="clogo">DataFlow</span><span
+          class="clogo">CloudSphere</span><span class="clogo">InfinityX</span><span class="clogo">ByteForge</span><span
+          class="clogo">Nexalabs</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="sec-i">
+      <div class="sec-hd">
+        <div>
+          <div class="tag reveal"><span class="tdot"></span>Our Services</div>
+          <h2 class="sh2 reveal">Solutions That <span class="si">Move</span><br>Your Business Forward</h2>
+          <p class="sp reveal">Precision-engineered software for modern enterprises — built to scale, integrate, and
+            deliver measurable ROI.</p>
+        </div><a href="#contact" class="bmain reveal" style="align-self:center;">All Services →</a>
+      </div>
+      <div class="svc-grid">
+        <div class="svc reveal">
+          <div class="sic ib">📦</div>
+          <div class="stit">InventR@ — Inventory Management</div>
+          <div class="sdesc">End-to-end inventory control with real-time tracking, barcode/QR scanning, automated
+            reorder points, multi-warehouse management, and live analytics.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+        <div class="svc reveal">
+          <div class="sic ip">🛒</div>
+          <div class="stit">WSPro — Procurement Solution</div>
+          <div class="sdesc">Intelligent procurement automation, vendor management, smart PO workflows, spend analytics,
+            and contract lifecycle management.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+        <div class="svc reveal">
+          <div class="sic ip">🛒</div>
+          <div class="stit">Consulting Services</div>
+          <div class="sdesc">Intelligent procurement automation, vendor management, smart PO workflows, spend analytics,
+            and contract lifecycle management.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+        <div class="svc reveal">
+          <div class="sic ia">🔨</div>
+          <div class="stit">Auction Portal Development</div>
+          <div class="sdesc">Feature-rich auction platforms with live bidding engines, automated lot management, payment
+            gateway integration, fraud prevention.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+        <div class="svc reveal">
+          <div class="sic is">💻</div>
+          <div class="stit">Custom Software Development</div>
+          <div class="sdesc">Tailor-made enterprise applications and SaaS platforms built to your exact specifications
+            with modern architectures.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+        <div class="svc reveal">
+          <div class="sic ig">📱</div>
+          <div class="stit">Mobile App Development</div>
+          <div class="sdesc">Cross-platform iOS and Android apps with offline capabilities and seamless backend
+            integration for field teams.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+        <div class="svc reveal">
+          <div class="sic ir">🔗</div>
+          <div class="stit">ERP &amp; API Integration</div>
+          <div class="sdesc">Seamless connectivity with SAP, Tally, Zoho, and 300+ tools. Unify your entire technology
+            stack.</div><a href="#" class="sarr">Explore →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec how-sec" id="process">
+    <div class="how-i">
+      <div>
+        <div class="tag reveal"><span class="tdot"></span>Our Process</div>
+        <h2 class="sh2 reveal">How We Turn Your<br><span class="si">Vision</span> Into Reality</h2>
+        <p class="sp reveal">A battle-tested framework refined across 500+ projects.</p>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="snum">01</div>
+            <div>
+              <div class="stitle">Discovery &amp; Requirements</div>
+              <div class="sdesc2">Deep-dive workshops to map business goals.</div>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="snum">02</div>
+            <div>
+              <div class="stitle">Architecture &amp; Design</div>
+              <div class="sdesc2">Scalable architecture and high-fidelity prototypes.</div>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="snum">03</div>
+            <div>
+              <div class="stitle">Agile Development</div>
+              <div class="sdesc2">Two-week sprints with continuous delivery.</div>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="snum">04</div>
+            <div>
+              <div class="stitle">Launch, Support &amp; Scale</div>
+              <div class="sdesc2">Production deployment and dedicated support.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="tpanel">
+          <div class="tpt">Technical Expertise</div>
+          <div class="skills">
+            <div>
+              <div class="sk-top"><span class="sk-n">Full-Stack Web Development</span><span class="sk-p">96%</span>
+              </div>
+              <div class="sk-tr">
+                <div class="sk-fi" data-w="96"></div>
+              </div>
+            </div>
+            <div>
+              <div class="sk-top"><span class="sk-n">Inventory &amp; ERP Systems</span><span class="sk-p">94%</span>
+              </div>
+              <div class="sk-tr">
+                <div class="sk-fi" data-w="94"></div>
+              </div>
+            </div>
+            <div>
+              <div class="sk-top"><span class="sk-n">Auction &amp; Bidding Platforms</span><span class="sk-p">91%</span>
+              </div>
+              <div class="sk-tr">
+                <div class="sk-fi" data-w="91"></div>
+              </div>
+            </div>
+          </div>
+          <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span
+              class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">Flutter</span><span
+              class="chip">AWS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-sec">
+    <div class="sec-i">
+      <div style="text-align:center;max-width:580px;margin:0 auto">
+        <div class="tag reveal" style="display:inline-flex"><span class="tdot"></span>Why balizana</div>
+        <h2 class="sh2 reveal" style="text-align:center">Everything You Need to<br>Build <span class="si">Something
+            Great</span></h2>
+      </div>
+      <div class="wgrid">
+        <div class="wc reveal">
+          <div class="wic">⚡</div>
+          <div class="wtit">Blazing Performance</div>
+          <div class="wdesc">Sub-100ms APIs, optimized queries for snappy experiences.</div>
+        </div>
+        <div class="wc reveal">
+          <div class="wic">🔄</div>
+          <div class="wtit">Agile Sprints</div>
+          <div class="wdesc">Bi-weekly demos and live progress dashboard.</div>
+        </div>
+        <div class="wc reveal">
+          <div class="wic">🛡️</div>
+          <div class="wtit">Enterprise Security</div>
+          <div class="wdesc">SOC 2 workflows, OWASP practices built-in.</div>
+        </div>
+        <div class="wc reveal">
+          <div class="wic">📊</div>
+          <div class="wtit">Data-Driven Results</div>
+          <div class="wdesc">Built-in analytics for real usage data.</div>
+        </div>
+        <div class="wc reveal">
+          <div class="wic">🌐</div>
+          <div class="wtit">Infinite Scalability</div>
+          <div class="wdesc">Auto-scaling infrastructure, zero-downtime release.</div>
+        </div>
+        <div class="wc reveal">
+          <div class="wic">🤝</div>
+          <div class="wtit">Dedicated Support</div>
+          <div class="wdesc">Named account manager and SLA-backed team.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="sec" id="portfolio">
+    <div class="sec-i">
+      <div class="sec-hd">
+        <div>
+          <div class="tag reveal"><span class="tdot"></span>Our Work</div>
+          <h2 class="sh2 reveal">Projects We're<br><span class="si">Proud Of</span></h2>
+        </div>
+      </div>
+      <div class="pfilt reveal"><button class="pfb on">All Projects</button><button class="pfb">Inventory
+          Systems</button><button class="pfb">Auction Portals</button></div>
+      <div class="pgrid">
+        <div class="pc reveal">
+          <div class="pvis">
+            <div class="pvi pv1">
+              <div style="text-align:center">
+                <div style="font-size:3.2rem">📦</div>
+                <div style="font-family:var(--font);font-size:.82rem;font-weight:700;color:rgba(255,255,255,.35);">
+                  Inventory Dashboard</div>
+              </div>
+            </div>
+          </div>
+          <div class="pov">
+            <div class="pcat">Inventory Management</div>
+            <div class="ptit">StockSense Pro — Multi-Warehouse Intelligence</div>
+            <div class="ptags"><span class="ptag">React</span><span class="ptag">Node.js</span></div>
+          </div>
+          <div class="plink">↗</div>
+        </div>
+        <div class="pc reveal">
+          <div class="pvis">
+            <div class="pvi pv2">🔨</div>
+          </div>
+          <div class="pov">
+            <div class="pcat">Auction Portal</div>
+            <div class="ptit">BidVault — Real-Time Auction Platform</div>
+            <div class="ptags"><span class="ptag">Next.js</span><span class="ptag">WebSockets</span></div>
+          </div>
+          <div class="plink">↗</div>
+        </div>
+        <div class="pc reveal">
+          <div class="pvis">
+            <div class="pvi pv3">🏭</div>
+          </div>
+          <div class="pov">
+            <div class="pcat">ERP Manufacturing</div>
+            <div class="ptit">FactoryOS — Production Tracker</div>
+            <div class="ptags"><span class="ptag">Python</span><span class="ptag">Django</span></div>
+          </div>
+          <div class="plink">↗</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec" style="background:var(--off);">
+    <div class="sec-i">
+      <div style="text-align:center;margin-bottom:52px">
+        <div class="tag reveal" style="display:inline-flex"><span class="tdot"></span>Client Stories</div>
+        <h2 class="sh2 reveal" style="text-align:center">Trusted by Leaders<br><span class="si">Across Industries</span>
+        </h2>
+      </div>
+      <div class="tgrid">
+        <div class="tc reveal">
+          <div class="tst">★★★★★</div>
+          <div class="tq">"balizana built our entire inventory and auction system from scratch. The platform manages
+            over 50,000 SKUs flawlessly."</div>
+          <div class="tau">
+            <div class="tav ta">AK</div>
+            <div>
+              <div class="tn">Arjun Kapoor</div>
+              <div class="tr">Director of Operations, TradeHub</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc reveal">
+          <div class="tst">★★★★★</div>
+          <div class="tq">"Their WSPro procurement solution reduced our cycle time by 60%. Absolutely exceptional."
+          </div>
+          <div class="tau">
+            <div class="tav tb">SR</div>
+            <div>
+              <div class="tn">Sunita Rajan</div>
+              <div class="tr">CEO, AuctionBridge</div>
+            </div>
+          </div>
+        </div>
+        <div class="tc reveal">
+          <div class="tst">★★★★★</div>
+          <div class="tq">"Modernized our legacy inventory system in 12 weeks. Operations team loves it."</div>
+          <div class="tau">
+            <div class="tav tc2">PM</div>
+            <div>
+              <div class="tn">Priya Mehta</div>
+              <div class="tr">CTO, LogiMart</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSULTING -->
+  <section class="sec" id="consulting" style="background:var(--white);">
+    <div class="sec-i">
+      <div style="text-align:center;margin-bottom:32px">
+        <div class="tag reveal" style="display:inline-flex"><span class="tdot"></span>Consulting</div>
+        <h2 class="sh2 reveal" style="text-align:center">Strategic <span class="si">Advisory</span> Services</h2>
+        <p class="sp reveal" style="margin:12px auto 0;text-align:center">Expert-led consulting to transform your
+          enterprise operations.</p>
+      </div>
+      <div class="consult-grid">
+        <div class="consult-card reveal">
+          <div class="consult-icon">🎯</div>
+          <div class="consult-title">Discovery Workshop</div>
+          <div class="consult-desc">Deep-dive analysis & roadmap for inventory/auction modernization.</div>
+          <div class="consult-feature">✓ 2-week engagement</div>
+          <div class="consult-feature">✓ Process audit & KPIs</div><a href="#contact" class="consult-cta">Inquire →</a>
+        </div>
+        <div class="consult-card reveal">
+          <div class="consult-icon">⚙️</div>
+          <div class="consult-title">Procurement Advisory</div>
+          <div class="consult-desc">WSPro implementation & vendor strategy optimization.</div>
+          <div class="consult-feature">✓ Sourcing transformation</div>
+          <div class="consult-feature">✓ Cost reduction roadmap</div><a href="#contact" class="consult-cta">Inquire
+            →</a>
+        </div>
+        <div class="consult-card reveal">
+          <div class="consult-icon">📈</div>
+          <div class="consult-title">Digital Strategy</div>
+          <div class="consult-desc">Enterprise architecture & ERP modernization roadmap.</div>
+          <div class="consult-feature">✓ Tech stack evaluation</div>
+          <div class="consult-feature">✓ 12‑month transformation plan</div><a href="#contact"
+            class="consult-cta">Inquire →</a>
+        </div>
+      </div>
+
+      <div style="margin-top:80px;">
+        <div style="text-align:center;margin-bottom:40px">
+          <div class="tag reveal" style="display:inline-flex"><span class="tdot"></span>Our Consulting Experts</div>
+          <h3 class="sh2 reveal" style="font-size:1.8rem">Meet the <span class="si">Minds</span> Behind Your Success
+          </h3>
+        </div>
+        <div class="experts-grid">
+          <div class="expert-card reveal">
+            <div class="expert-img">RK</div>
+            <div class="expert-name">Raghav Khanna</div>
+            <div class="expert-role">Principal Consultant</div>
+            <div class="expert-bio">15+ years in supply chain & inventory transformation. Led 40+ enterprise inventory
+              projects.</div>
+          </div>
+          <div class="expert-card reveal">
+            <div class="expert-img">SM</div>
+            <div class="expert-name">Shreya Mehta</div>
+            <div class="expert-role">Procurement Strategist</div>
+            <div class="expert-bio">Former CPO, expert in WSPro implementation, sustainable sourcing & vendor
+              ecosystems.</div>
+          </div>
+          <div class="expert-card reveal">
+            <div class="expert-img">AV</div>
+            <div class="expert-name">Amit Vyas</div>
+            <div class="expert-role">Tech Advisor & ERP Lead</div>
+            <div class="expert-bio">Specializes in API integrations & legacy modernization. Trusted advisor for 20+
+              enterprises.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec" id="contact">
+    <div class="sec-i">
+      <div class="tag reveal">🚀 Start Your Project</div>
+      <h2 class="sh2 reveal">Ready to Build Something<br><span class="si">Remarkable?</span></h2>
+      <p class="ctap reveal">Whether it's InventR@, WSPro, or a full enterprise platform — we're your technology
+        partner.</p>
+      <div class="ctabtns reveal"><a href="mailto:info@balizana.com" class="bwhite">Start Your Project →</a><a
+          href="tel:+91 9635088335" class="boutw">📞 Book a Free Call</a></div>
+    </div>
+  </section>
+
+  <!-- FOOTER - LIGHT THEME WITH REFINED LOOK -->
+  <footer>
+    <div class="fi">
+      <div class="fg">
+        <div class="fgb">
+          <div class="brand">
+            <div class="bmark"><span>B</span></div>
+            <div class="bname">balizana<em> Technologies</em></div>
+          </div>
+          <p class="fgt">We engineer enterprise-grade software — inventory systems, auction platforms, and procurement
+            solutions — that accelerate business growth.</p>
+          <div class="fsocs"><a href="#" class="fsc">in</a><a href="#" class="fsc">𝕏</a><a href="#" class="fsc">fb</a>
+          </div>
+        </div>
+        <div class="fc">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#">InventR@</a></li>
+            <li><a href="#">Consulting Services</a></li>
+            <li><a href="#">WSPro Procurement</a></li>
+            <li><a href="#">Auction Portals</a></li>
+            <li><a href="#">Custom Software</a></li>
+            <li><a href="#">ERP Integration</a></li>
+          </ul>
+        </div>
+        <div class="fc">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="fc">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="#">info@balizana.com</a></li>
+            <li><a href="#">+91 96350 88335</a></li>
+            <li><a href="#">Software Technology Park of India, Room No.1, Mangal Bhawan, Nehru Nagar East,
+                Bhilai,Chhattisgarh.</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="fbot">
+        <div class="fcp">© 2026 balizana Technologies Pvt. Ltd. All rights reserved.</div>
+        <div class="flinks"><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </div>
+    </div>
+  </footer>
+  <button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    const nav = document.getElementById('nav'), stt = document.getElementById('stt');
+    window.addEventListener('scroll', () => { nav.classList.toggle('up', window.scrollY > 16); stt.classList.toggle('show', window.scrollY > 500); });
+    const burg = document.getElementById('burg'), mm = document.getElementById('mm');
+    burg.addEventListener('click', () => mm.classList.toggle('show'));
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mm.classList.remove('show')));
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; const sibs = [...(e.target.parentElement?.querySelectorAll('.reveal') || [])]; const i = sibs.indexOf(e.target); e.target.style.transitionDelay = Math.min(i * .07, .4) + 's'; e.target.classList.add('in'); obs.unobserve(e.target); }); }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const sObs = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; e.target.querySelectorAll('.sk-fi').forEach(b => { b.style.width = b.dataset.w + '%'; }); sObs.unobserve(e.target); }); }, { threshold: .25 });
+    document.querySelectorAll('.tpanel').forEach(el => sObs.observe(el));
+    document.querySelectorAll('.pfb').forEach(b => { b.addEventListener('click', () => { document.querySelectorAll('.pfb').forEach(x => x.classList.remove('on')); b.classList.add('on'); }); });
+    document.querySelectorAll('.dtab').forEach(t => { t.addEventListener('click', () => { document.querySelectorAll('.dtab').forEach(x => x.classList.remove('on')); t.classList.add('on'); }); });
+    const secs = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => { let cur = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; }); document.querySelectorAll('.nav-c a').forEach(a => { const h = a.getAttribute('href').replace('#', ''); a.style.color = h === cur ? 'var(--blue2)' : ''; a.style.background = h === cur ? 'var(--sky-pale)' : ''; }); });
+  </script>
+</body>
+
+</html>

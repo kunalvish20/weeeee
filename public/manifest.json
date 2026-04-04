@@ -1,0 +1,33 @@
+{
+  "name": "balizana Technologies",
+  "short_name": "balizana",
+  "description": "Enterprise software solutions including inventory systems, auction platforms, and procurement solutions",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#2558E8",
+  "background_color": "#FFFFFF",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232558E8' width='192' height='192'/><text x='96' y='144' font-size='120' fill='%23FFFFFF' font-weight='bold' text-anchor='middle'>B</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%232558E8' width='512' height='512'/><text x='256' y='384' font-size='320' fill='%23FFFFFF' font-weight='bold' text-anchor='middle'>B</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 720'><rect fill='%23F7F9FF' width='540' height='720'/><text x='270' y='360' font-size='60' fill='%232558E8' text-anchor='middle' font-weight='bold'>balizana</text></svg>",
+      "sizes": "540x720",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ]
+}
