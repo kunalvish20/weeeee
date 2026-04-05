@@ -9,10 +9,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>,
 )
 
-// Register Service Worker for PWA support
+// Service Worker registration commented out to bypass caching issues during development
+/*
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .catch(err => console.log('Service Worker registration failed:', err))
   })
 }
+*/
